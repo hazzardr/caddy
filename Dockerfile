@@ -1,9 +1,9 @@
-FROM docker.io/library/caddy:2.11.8-builder@sha256:d4eb070c36154bd2d4c94b40359a03c6168346d5af5404963c74691ab77fb63f AS builder
+FROM docker.io/library/caddy:2.11.9-builder@sha256:3fddbec729442a56b942d4c9eaef1df80893dbf2cf5b86701bfae6aad1408eeb AS builder
 
 RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare \
     --with github.com/mholt/caddy-l4
 
-FROM docker.io/library/caddy:2.11.8@sha256:4fcafa98afd1c2e642e353e3c5cf9ddbe892fcee14bc990e7ba2c5b78e51f9cf
+FROM docker.io/library/caddy:2.11.9@sha256:0c2243efcf437ab7f7a978f1027fcf0d4f9be8a75df27b1b3fbc5dbe0ffa8cf0
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
